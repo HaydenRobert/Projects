@@ -10,6 +10,4 @@ def main():
     another_guitar = Guitar("Another guitar", 2012, 16035.40)
     print("{} get_age() - Expected 6. Got {}".format(another_guitar.name, another_guitar.get_age()))
 
-
-
 main()
