@@ -11,10 +11,9 @@ class UnreliableCar(Car):
         self.reliability = reliability
 
     def drive(self, distance):
-        random_car_distance = randrange(0, 101, 1)
-        if random_car_distance <= self.reliability:
-            self.odometer += random_car_distance
-            return random_car_distance
+        random_car_reliable = float(randrange(0, 101, 1))
+        if random_car_reliable <= self.reliability:
+            return 0
         else:
-            self.odometer += distance
-            return distance
+            distance_driven = super().drive(distance)
+            return distance_driven
