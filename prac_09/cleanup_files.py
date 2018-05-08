@@ -5,6 +5,7 @@ File renaming and os examples
 import shutil
 import os
 
+
 def main():
     """Demo file renaming with the os module."""
     print("Current directory is", os.getcwd())
@@ -52,23 +53,20 @@ def get_fixed_filename(filename):
     # First, replace the spaces and .TXT (the easy part)
     filename = filename.replace(" ", "_").replace(".TXT", ".txt")
     collection = filename[0].upper()
-    prev_character = collection
-    for character in filename[1:]:
-        # print(character)
-        collection = collection + character
+    prev_character = collection[0]
+    for index, character in enumerate(filename[1:],1):
         if character.islower():
             if prev_character == "_":
-                collection = collection[-2] + character.upper()
-                # collection[-2]
+                character = character.upper()
         elif character.isupper():
-            if collection[-1].islower():
-                collection = collection + character
+            if prev_character.islower() or prev_character.isupper():
+                collection += "_"
         prev_character = character
-    print(collection)
-    # new_name = "{}".format(collection)
+        collection = collection + character
+    new_name = "{}".format(collection)
     # TODO: step-by-step, consider the problem cases and solve them
 
-    # return new_name
+    return new_name
 
 
 main()
